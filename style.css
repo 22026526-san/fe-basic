@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.header {
+    height: 48px;
+    width: 100%;
+}
+
+.main-layout {
+    display: flex;
+    height: calc(100% - 48px);
+    width: 100%;
+}
+
+.sidebar {
+    width: 268px; 
+    height: 100%;
+    background:
+        url(https://amisplatform.misacdn.net/apps/recruit/event-sidebar.86fc6daf7938e471.svg);
+    background-color: #051529;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content {
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+}
