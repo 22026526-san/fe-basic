@@ -9,18 +9,18 @@ html, body {
 }
 
 .header {
-    height: 48px;
+    height: 52px;
     width: 100%;
 }
 
 .main-layout {
     display: flex;
-    height: calc(100% - 48px);
+    height: calc(100% - 52px);
     width: 100%;
 }
 
 .sidebar {
-    width: 268px; 
+    width: 260px; 
     height: 100%;
     background:
         url(https://amisplatform.misacdn.net/apps/recruit/event-sidebar.86fc6daf7938e471.svg);

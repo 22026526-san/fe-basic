@@ -39,20 +39,74 @@
 
 
 .icon {
-    width: 24px; 
+    width: 24x;
     height: 24px;
-    display: flex;
-    align-items: center;
-    color: #C5CCD5;
+    min-width: 24px;
+
+    background-color: #C5CCD5;
+
+    mask-image: url("../../asset/ICON.svg");
+    mask-repeat: no-repeat;
+}
+
+.icon-sb-recruiment {
+    mask-position: -94px -113px;
+}
+
+.icon-sb-candidate-active {
+    mask-position: -24px -112px;
+}
+
+.icon-sb-calendar{
+    mask-position: -144px -113px;
+}
+
+.icon-sb-talent-pools{
+    mask-position: 0px -112px;
+}
+
+.icon-sb-recruitment-campaign-active{
+    mask-position: -73px -633px;
+}
+
+.icon-sb-task{
+    mask-position: -336px -113px;
+}
+
+.icon-email-ai-marketing{
+    mask-position: -160px -248px;
+}
+
+.icon-chat-box{
+    mask-position: -72px -845px;
+}
+
+.icon-sb-report{
+    mask-position: -72px -113px;
+}
+
+.icon-sb-setting{
+    mask-position: 0px -136px
+}
+.icon-sb-other{
+    mask-position: -359px -614px;
+}
+
+.icon-left{
+    mask-position: -58px -693px;
 }
 
 
 .sidebar-content-list-item.active {
     background-color: #2680eb; 
 }
-.sidebar-content-list-item.active .label , .sidebar-content-list-item.active .icon {
+.sidebar-content-list-item.active .label {
     font-weight: 500;
     color: #ffffff; 
+}
+.sidebar-content-list-item.active .icon {
+    font-weight: 500;
+    background-color: #ffffff; 
 }
 .sidebar-btn{
     padding: 0 12px;
@@ -66,8 +120,12 @@
     border-radius: 4px;
 }
 
-.collapse-btn .label, .collapse-btn .icon {
+.collapse-btn .label{
     color: #ffffff;
+}
+
+.collapse-btn .icon {
+    background-color: #ffffff;
 }
 
 .collapse-btn:hover {
