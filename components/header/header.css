@@ -4,6 +4,9 @@
     justify-content: space-between;
     height: 52px;
     width: 100%;
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    z-index: 10;
 }
 
 .header-content-left {
@@ -11,6 +14,7 @@
     align-items: center;
     height: 100%;
     width: 100%;
+    gap:10px
 }
 
 .header-content-navbar {
@@ -76,4 +80,190 @@
     color: #000000;
     font-family: 'Inter', Helvetica, Arial, sans-serif;
     font-weight: bold;
+}
+
+.header-content-right{
+    height: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.recruitment-page{
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+.recruitment-page-icon{
+    mask-position: 0px -608px;
+    background-color: rgba(128, 128, 128, 0.497);
+    margin-top: 4px;
+}
+
+.icon-header {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    mask-image: url("../../asset/icons/ICON.svg");
+    mask-repeat: no-repeat;
+}
+
+.recruitment-page-title{
+    font-size: 14px;
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    color: #1e2633;
+    padding: 4px 0;
+    width: 152px;
+}
+
+.icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: transparent;
+}
+
+.icon-notification-version{
+    background: url(https://amisplatform.misacdn.net/apps/recruit/icon-notification-version.d5e3dc604036ed5b.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 26px;
+    height: 26px;
+}
+
+.icon-store {
+    height: 24px;
+    aspect-ratio: 1 / 1;
+    background: url(https://cdnstore.misacdn.net/lib/static/cs-icon-store.svg) no-repeat center;
+    background-size: 24px 24px;
+    cursor: pointer;
+}
+
+.icon-user-controlpanel{
+    position: relative;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTEuNSIgY3k9IjUuNSIgcj0iMy41IiBzdHJva2U9IiM3NTc1NzUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cGF0aCBkPSJNMy41MDYyOSAxNS43NDEzTDMuMTA2NTIgMTYuMjk2NUMxLjM5MTk2IDE4LjY3NzggMy4wOTM2OCAyMiA2LjAyODA0IDIySDE1Ljk3MkMxOC45MDYzIDIyIDIwLjYwOCAxOC42Nzc4IDE4Ljg5MzUgMTYuMjk2NUwxOC40OTM3IDE1Ljc0MTNDMTYuODAyNCAxMy4zOTIyIDE0LjA4NDUgMTIgMTEuMTg5OSAxMkgxMC44MTAxQzcuOTE1NTMgMTIgNS4xOTc2MSAxMy4zOTIyIDMuNTA2MjkgMTUuNzQxM1oiIHN0cm9rZT0iIzc1NzU3NSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIxIDVWN1Y5IiBzdHJva2U9IiMyQ0EwMUMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xOSA3SDIxSDIzIiBzdHJva2U9IiMyQ0EwMUMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=);
+    width: 34px;
+    height: 34px;
+    margin-top: 0;
+    border-radius: 16px;
+    background-position: center;
+    background-size: 24px;
+    background-repeat: no-repeat;
+    overflow: unset;
+    cursor: pointer;
+}
+
+.icon-messgae{
+    background-image: url(../../asset/icons/message.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 26px;
+    position: relative;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.icon-noti {
+    border-radius: 50%;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../asset/icons/noti.svg)
+}
+
+.icon-helpmenu{
+    width: 34px;
+    height: 34px;
+    border-radius: 16px;
+    background-position: center;
+    background-size: 26px;
+    background-repeat: no-repeat;
+    overflow: unset;
+    cursor: pointer;
+    background-image: url(../../asset/icons/help_menu.svg)
+}
+
+.icon-other{
+    width: 34px;
+    height: 34px;
+    border-radius: 16px;
+    background-position: center;
+    background-size: 26px;
+    background-repeat: no-repeat;
+    overflow: unset;
+    cursor: pointer;
+    background-image: url(../../asset/icons/other.svg)
+}
+
+.avatar-container {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.avatar-container img {
+    max-height: 34px;
+    max-width: 34px;
+    vertical-align: middle;
+    border-style: none;
+    cursor: pointer;
+}
+
+.header-content-search{
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 365px;
+    height: 32px;
+    background-color: #f2f2f2;
+    border: none;
+    padding: 1px 32px 1px 12px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    mask-image: url(../../asset/icons/ICON.svg);
+    mask-repeat: no-repeat;
+    mask-position: -283px -945px;
+    background-color: rgba(128, 128, 128, 0.832);
+    width: 18px;
+    height: 18px;
+    margin-top: 4px;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    color: #1e2633;
+}
+
+.search-bar input::placeholder {
+    color: #9aa1a9;
 }
