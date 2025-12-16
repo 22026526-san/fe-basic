@@ -6,21 +6,23 @@
 
 html, body {
     height: 100%;
+    overflow: hidden;
 }
 
 .header {
-    height: 52px;
+    height: 48px;
     width: 100%;
 }
 
 .main-layout {
     display: flex;
-    height: calc(100% - 52px);
+    height: calc(100% - 48px);
     width: 100%;
+    overflow: hidden;
 }
 
 .sidebar {
-    width: 260px; 
+    min-width: 236px; 
     height: 100%;
     background:
         url(https://amisplatform.misacdn.net/apps/recruit/event-sidebar.86fc6daf7938e471.svg);
@@ -28,10 +30,16 @@ html, body {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
+    flex-shrink: 0;
 }
 
 .content {
     flex: 1;
     height: 100%;
-    overflow-y: auto;
+    max-width: calc(100% - 62px);
+    min-width: calc(100% - 236px);
+    display: flex;
+    background-color: #f2f2f2;
+    flex-direction: column;
+    overflow: hidden;
 }

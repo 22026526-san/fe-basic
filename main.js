@@ -1,3 +1,5 @@
+import { renderCandidateTable } from './components/body/body.js';
+
 function loadCSS(href) {
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -15,7 +17,6 @@ async function loadComponent(id, htmlPath, cssPath = null) {
             
         
             if (cssPath) {
-                printNumbers();
                 loadCSS(cssPath);
             }
         }
@@ -24,15 +25,9 @@ async function loadComponent(id, htmlPath, cssPath = null) {
     }
 }
 
-function printNumbers() {
-    for (let i = 1; i <= 100; i++) {
-        console.log(i);
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    
+document.addEventListener("DOMContentLoaded", async () => {
     loadComponent('header-container', './components/header/header.html', './components/header/header.css');
     loadComponent('sidebar-container', './components/sidebar/sidebar.html', './components/sidebar/sidebar.css');
-    loadComponent('body-container', './components/body/body.html', './components/body/body.css');
+    await loadComponent('body-container', './components/body/body.html', './components/body/body.css');
+    renderCandidateTable();
 });

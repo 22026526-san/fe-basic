@@ -8,6 +8,25 @@
     background: rgba(0, 0, 0, 0.3);
 }
 
+.sidebar.collapsed {
+    min-width: 62px;
+}
+
+.sidebar.collapsed .label {
+    display: none; 
+}
+
+.sidebar.collapsed .collapse-btn .icon {
+    transform: rotate(180deg);
+}
+
+.sidebar.collapsed .sidebar-content-list-item {
+    justify-content: center;
+}
+.sidebar.collapsed .sidebar-content-list-item .icon {
+    margin-right: 0;
+}
+
 
 .sidebar-content-list{
     display: flex;
@@ -17,7 +36,7 @@
 .sidebar-content-list-item {
     display: flex;
     align-items: center;
-    padding: 10px 12px;
+    padding: 8px 12px;
     cursor: pointer;
     margin: 12px;
     margin-top: unset; 
@@ -27,12 +46,12 @@
 
 
 .sidebar-content-list-item:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 
 .label {
-    font-size: 16px;
+    font-size: 14px;
     color: #C5CCD5;
     font-family: 'Inter', Helvetica, Arial, sans-serif;
 }
@@ -95,8 +114,9 @@
     background-size: 24px;
     background-repeat: no-repeat;
     overflow: unset;
-    margin-left: -5px;
+    margin-left: -3px;
     background-image: url(../../asset/icons/knowladge.svg);
+    border-radius: 50%;
 }
 .icon-left{
     mask-position: -58px -693px;
@@ -120,7 +140,7 @@
 .collapse-btn {
     display: flex;
     align-items: center;
-    padding: 10px 16px;
+    padding: 8px 12px;
     border: 1px solid #ffffff;
     cursor: pointer;
     border-radius: 4px;
@@ -136,4 +156,8 @@
 
 .collapse-btn:hover {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-content-list.collapsed .label {
+    display: none;
 }
