@@ -1,4 +1,5 @@
 import { getCandidatesFromLocalStorage } from '../../utils/localStorage.js';
+import { openEditPopup } from '../../utils/popup.js';
 function checkNull(value) {
     return value ? value : "--";
 }
@@ -63,9 +64,21 @@ export function renderCandidateTable() {
             <td>${checkNull(candidate.address)}</td>
             <td>${checkNull(candidate.gender)}</td>
             <td>
-                <div class="icon-update-user"></div>
+                <div class="icon-update-user" data-id="${candidate.id}"></div>
             </td>
         `;
+
+        const editButtons = document.querySelectorAll('.icon-update-user');
+
+        editButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                
+                const idString = this.getAttribute('data-id');
+                const id = Number(idString); 
+
+                openEditPopup(id);
+            });
+        });
 
     
         tableBody.appendChild(row);

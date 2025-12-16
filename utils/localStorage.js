@@ -9,10 +9,7 @@ export function initializeData() {
 export function getCandidatesFromLocalStorage() {
   const data = localStorage.getItem(KEY);
   if (data) {
-    console.log("Lấy dữ liệu từ LocalStorage:", JSON.parse(data));
     return JSON.parse(data); 
   }
   return []; 
 }
-
-initializeData();

@@ -1,4 +1,6 @@
 import { renderCandidateTable } from './components/body/body.js';
+import { initPopupEvents } from './utils/popup.js';
+import { initializeData } from './utils/localStorage.js';
 
 function loadCSS(href) {
     const link = document.createElement("link");
@@ -28,6 +30,9 @@ async function loadComponent(id, htmlPath, cssPath = null) {
 document.addEventListener("DOMContentLoaded", async () => {
     loadComponent('header-container', './components/header/header.html', './components/header/header.css');
     loadComponent('sidebar-container', './components/sidebar/sidebar.html', './components/sidebar/sidebar.css');
+    initializeData();
     await loadComponent('body-container', './components/body/body.html', './components/body/body.css');
+    await loadComponent('popup-container', './components/popup-add-user/popup-add-user.html', './components/popup-add-user/popup-add-user.css');
     renderCandidateTable();
+    initPopupEvents();
 });
