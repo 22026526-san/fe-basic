@@ -4,7 +4,6 @@ import { openEditPopup } from '../../components/popup/popup.js';
 let currentPage = 1;   
 let pageSize = 25;    
 let totalRecords = 0;
-
 let searchTerm = "";
 
 function checkNull(value) {
@@ -89,7 +88,19 @@ export function initPaginationEvents() {
         });
         nextBtn.style.cursor = 'pointer';
     }
+
+    const pageSizeSelect = document.getElementById('pageSizeSelect');
+    if (pageSizeSelect) {
+        pageSizeSelect.addEventListener('change', (e) => {
+            const newSize = parseInt(e.target.value);
+            pageSize = newSize;
+            currentPage = 1;
+            renderCandidateTable();
+        });
+    }
 }
+
+
 
 export function initSearchEvents() {
     const searchInput = document.querySelector('.search-box input');

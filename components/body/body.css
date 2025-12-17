@@ -474,6 +474,23 @@ input[type="checkbox"] {
     transition: opacity 0.2s ease; 
 }
 
+.form-select-size {
+    padding: 0px 5px;
+    border-radius: 4px;
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: auto; 
+    appearance: auto;
+    border: none;
+}
+
+.form-select-size:hover {
+    color: #3b82f6; 
+}
 
 .candidate-table tbody tr:hover .icon-update-user {
     opacity: 1; 
