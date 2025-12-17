@@ -175,12 +175,12 @@
 }
 
 .candidate-table tbody tr:hover td {
-    background: #f9fafb !important;
+    background: #e1eeff !important;
 }
 
 .candidate-table tbody tr:hover td:first-child,
 .candidate-table tbody tr:hover td:last-child {
-    background: #f9fafb !important;
+    background: #e1eeff !important;
 }
 
 
