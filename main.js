@@ -1,6 +1,7 @@
 import { renderCandidateTable } from './components/body/body.js';
 import { initPopupEvents } from './utils/popup.js';
 import { initializeData } from './utils/localStorage.js';
+import {setupSidebarToggle} from './components/sidebar/sidebar.js';
 
 function loadCSS(href) {
     const link = document.createElement("link");
@@ -35,4 +36,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadComponent('popup-container', './components/popup-add-user/popup-add-user.html', './components/popup-add-user/popup-add-user.css');
     renderCandidateTable();
     initPopupEvents();
+    setupSidebarToggle();
 });

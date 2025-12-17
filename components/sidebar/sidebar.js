@@ -11,3 +11,13 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
+export function setupSidebarToggle() {
+  const sidebarItems = document.querySelectorAll(".sidebar-content-list-item");
+  sidebarItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      sidebarItems.forEach((i) => i.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
+}
