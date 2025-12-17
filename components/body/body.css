@@ -362,6 +362,7 @@ input[type="checkbox"] {
     width: 18px;
     height: 18px;
     margin-top: 2px;
+    cursor: pointer;
 }
 
 .toolbar-right {
@@ -423,7 +424,7 @@ input[type="checkbox"] {
     background-color: #6b7280;
 }
 
-.icon-right{
+.icon-next{
     width: 20px;
     height: 20px;
     min-width: 20px;
@@ -432,15 +433,23 @@ input[type="checkbox"] {
     mask-position: -40px -696px;
     background-color: #6b7280;
 }
-.icon-left{
+.icon-prev{
     width: 20px;
     height: 20px;
     min-width: 20px;
     mask-image: url(../../asset/icons/ICON.svg);
     mask-repeat: no-repeat;
     mask-position: -60px -696px;
-    background-color: #6b728048;
+    background-color: #6b7280;
 }
+
+.icon-prev.disabled, 
+.icon-next.disabled {
+    opacity: 0.5 !important;      
+    pointer-events: none !important; 
+    cursor: default !important;   
+}
+
 .icon-dropdown{
     width: 16px;
     height: 16px;

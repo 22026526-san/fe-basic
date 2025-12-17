@@ -1,4 +1,6 @@
-import { renderCandidateTable } from '../components/body/body.js'; 
+import { renderCandidateTable } from '../body/body.js'; 
+
+let isEdit = false;
 
  export function showPopup() {
     const popup = document.getElementById('popup-container');
@@ -84,6 +86,8 @@ export function openEditPopup(id) {
     document.getElementById('recruitmentRound').value = candidate.recruitmentRound || ''; 
     document.getElementById('recruitmentDate').value = candidate.recruitmentDate || '';
 
+    isEdit = true;
+
     showPopup();    
 }
 
@@ -94,7 +98,7 @@ function saveCandidate() {
     const fullNameInput = document.getElementById('name');
     
     if (!fullNameInput || !fullNameInput.value.trim()) {
-        alert("Vui lòng nhập Họ và tên ứng viên!");
+        alert("Vui lòng nhập Họ và tên ứng viên");
         fullNameInput?.focus();
         return;
     }
@@ -126,7 +130,12 @@ function saveCandidate() {
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(existingData));
 
-    console.log("Đã thêm mới ứng viên:", newCandidate);
+    if (isEdit) {
+        isEdit = false;
+        alert("Cập nhật thông tin ứng viên thành công");
+    } else {
+        alert("Thêm ứng viên thành công");
+    }
 
     renderCandidateTable(); 
     hidePopup(); 

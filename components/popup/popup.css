@@ -202,7 +202,25 @@
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
+.form-input:hover,
+.form-select:hover,
+.form-textarea:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); 
+    outline: none;
+}
 
+.dx-texteditor-container:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    cursor: text;
+}
+
+.form-input:focus-within,
+.dx-texteditor-container:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
 .form-textarea {
     resize: vertical;
     min-height: 80px;
@@ -372,3 +390,4 @@
 input[type="file"] {
     display: none;
 }
+

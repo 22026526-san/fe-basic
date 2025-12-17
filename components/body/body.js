@@ -1,5 +1,12 @@
 import { getCandidatesFromLocalStorage } from '../../utils/localStorage.js';
-import { openEditPopup } from '../../utils/popup.js';
+import { openEditPopup } from '../../components/popup/popup.js';
+
+let currentPage = 1;   
+let pageSize = 25;    
+let totalRecords = 0;
+
+let searchTerm = "";
+
 function checkNull(value) {
     return value ? value : "--";
 }
@@ -18,19 +25,121 @@ function renderStars(rate) {
     return starsHtml;
 }
 
-export function renderCandidateTable() {
-    const storageData = getCandidatesFromLocalStorage();
-    
-    if (!storageData) {
-        console.log("Chưa có dữ liệu trong LocalStorage");
-        return;
+export function updateFooterUI() {
+    const totalLabel = document.querySelector('.footer-left strong');
+    if (totalLabel) {
+        totalLabel.innerText = totalRecords;
     }
+    const startRecord = totalRecords === 0 ? 0 : (currentPage - 1) * pageSize + 1;
+    let endRecord = currentPage * pageSize;
+    
+    if (endRecord > totalRecords) {
+        endRecord = totalRecords;
+    }
+
+    const paginationInfo = document.querySelector('.pagination span');
+    if (paginationInfo) {
+        paginationInfo.innerText = `${startRecord} - ${endRecord} bản ghi`;
+    }
+
+    const prevBtn = document.querySelector('.icon-prev');
+    const nextBtn = document.querySelector('.icon-next');
+    const totalPages = Math.ceil(totalRecords / pageSize);
+
+    if (prevBtn) {
+        if (currentPage === 1) {
+            prevBtn.classList.add('disabled'); 
+        } else {
+            prevBtn.classList.remove('disabled'); 
+        }
+    }
+
+    if (nextBtn) {
+        if (currentPage >= totalPages || totalRecords === 0) {
+            nextBtn.classList.add('disabled'); 
+        } else {
+            nextBtn.classList.remove('disabled'); 
+        }
+    }
+    
+}
+
+export function initPaginationEvents() {
+    const prevBtn = document.querySelector('.icon-prev');
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--; 
+                renderCandidateTable(); 
+            }
+        });
+       
+        prevBtn.style.cursor = 'pointer'; 
+    }
+
+    const nextBtn = document.querySelector('.icon-next');
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const totalPages = Math.ceil(totalRecords / pageSize);
+            
+            if (currentPage < totalPages) {
+                currentPage++; 
+                renderCandidateTable(); 
+            }
+        });
+        nextBtn.style.cursor = 'pointer';
+    }
+}
+
+export function initSearchEvents() {
+    const searchInput = document.querySelector('.search-box input');
+    const searchClick = document.querySelector('.search-icon-table');
+
+    if (searchClick) {
+        console.log('here')
+        searchClick.addEventListener('click', () => {
+            const value = searchInput.value;
+            searchTerm = value.trim(); 
+            currentPage = 1;
+            renderCandidateTable();
+        });
+    }
+}
+
+export function renderCandidateTable() {
+    const allData = getCandidatesFromLocalStorage() || [];
+    
+    let finalData = [];
+
+    if (searchTerm.trim() === "") {
+        finalData = allData;
+    } else {
+        const keyword = searchTerm.toLowerCase();
+        finalData = allData.filter(candidate => {
+            const name = (candidate.fullName || "").toLowerCase();
+            const email = (candidate.email || "").toLowerCase();
+            const phone = String(candidate.phone || ""); 
+
+            return name.includes(keyword) || email.includes(keyword) || phone.includes(keyword);
+        });
+        if (finalData.length === 0) {
+            alert("Thông tin của ứng viên không tồn tại");
+            return;
+        }
+    }
+
+    totalRecords = finalData.length;
+
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+
+    const pageData = finalData.slice(startIndex, endIndex);
 
     const tableBody = document.querySelector('.candidate-table tbody');
     
     tableBody.innerHTML = '';
 
-    storageData.forEach(candidate => {
+    pageData.forEach(candidate => {
         const row = document.createElement('tr');
 
         row.innerHTML = `
@@ -67,20 +176,20 @@ export function renderCandidateTable() {
                 <div class="icon-update-user" data-id="${candidate.id}"></div>
             </td>
         `;
-
-        const editButtons = document.querySelectorAll('.icon-update-user');
-
-        editButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                
-                const idString = this.getAttribute('data-id');
-                const id = Number(idString); 
-
-                openEditPopup(id);
-            });
-        });
-
     
         tableBody.appendChild(row);
     });
+    const editButtons = document.querySelectorAll('.icon-update-user');
+
+    editButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            
+            const idString = this.getAttribute('data-id');
+            const id = Number(idString); 
+
+            openEditPopup(id);
+        });
+    });
+
+    updateFooterUI();
 }
