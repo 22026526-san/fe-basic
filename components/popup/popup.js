@@ -2,7 +2,7 @@ import { renderCandidateTable } from '../body/body.js';
 
 let isEdit = false;
 
- export function showPopup() {
+export function showPopup() {
     const popup = document.getElementById('popup-container');
     if (popup) {
         popup.style.display = 'flex';
@@ -88,6 +88,11 @@ export function openEditPopup(id) {
 
     isEdit = true;
 
+    const saveBtn = document.querySelector('.popup-footer .btn-primary');
+    if (saveBtn) {
+        saveBtn.setAttribute('data-id', id);      
+    }
+
     showPopup();    
 }
 
@@ -103,32 +108,49 @@ function saveCandidate() {
         return;
     }
 
-    const existingDataJson = localStorage.getItem(STORAGE_KEY);
-    const existingData = existingDataJson ? JSON.parse(existingDataJson) : [];
-
-    const newCandidate = {
-        id: existingData.length + 1, 
+    const formData = {
         fullName: document.getElementById('name').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
-        recruitmentCampaign: null,
-        recruitmentStatus: "Đang đào tạo",
-        evaluation: 0,
-        candidateSource: "Misa tuyển dụng",
-        jobPost: document.getElementById('jobPost').value,
-        recruitmentRound: document.getElementById('recruitmentRound').value, 
+        dateOfBirth: document.getElementById('birthDate').value,
+        gender: document.getElementById('gender').value,
+        area: document.getElementById('area').value,
+        address: document.getElementById('address').value,
         educationLevel: document.getElementById('educationLevel').value,
         recentWorkplace: document.getElementById('recentWorkplace').value,
-        area: document.getElementById('area').value,
-        dateOfBirth: document.getElementById('birthDate').value,
-        address: document.getElementById('address').value,
-        gender: document.getElementById('gender').value,
-        recruitmentDate: document.getElementById('recruitmentDate').value || new Date().toISOString().split('T')[0]
+        jobPost: document.getElementById('jobPost').value,
+        recruitmentRound: document.getElementById('recruitmentRound').value,
+        recruitmentDate: document.getElementById('recruitmentDate').value || new Date().toISOString().split('T')[0],
+        recruitmentCampaign: null,
+        candidateSource: "Misa tuyển dụng",
     };
 
-    existingData.unshift(newCandidate);
+    let existingData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+    const saveBtn = document.querySelector('.popup-footer .btn-primary');
+    const editId = saveBtn ? saveBtn.getAttribute('data-id') : null;
+
+    if (editId) {
+        const index = existingData.findIndex(c => c.id == editId);
+        
+        if (index !== -1) {
+            existingData[index] = { 
+                ...existingData[index], 
+                ...formData 
+            };
+        }
+    } else {
+        const newCandidate = {
+            id: existingData.length > 0 ? Math.max(...existingData.map(c => c.id)) + 1 : 1,
+            ...formData,
+            recruitmentStatus: "Đang đào tạo",
+            evaluation: 0,
+        };
+        existingData.unshift(newCandidate);
+    }
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(existingData));
+    renderCandidateTable();
 
     if (isEdit) {
         isEdit = false;
